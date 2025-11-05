@@ -7,30 +7,30 @@ namespace xsf_data_structures {
 
 template <typename T>
 class XSFLinkedQueue {
- public:
-  void Push(const T& data) { list.PushBack(data); }
+   public:
+    void Push(const T& data) { list.PushBack(data); }
 
-  void Push(T&& data) { list.PushBack(std::move(data)); }
+    void Push(T&& data) { list.PushBack(std::move(data)); }
 
-  template <typename... Args>
-  void Emplace(Args&&... args) {
-    list.EmplaceBack(std::forward<Args>(args)...);
-  }
+    template <typename... Args>
+    void Emplace(Args&&... args) {
+        list.EmplaceBack(std::forward<Args>(args)...);
+    }
 
-  void Pop() { list.PopFront(); }
+    void Pop() { list.PopFront(); }
 
-  T& Front() { return list.Front(); }
+    T& Front() { return list.Front(); }
 
-  const T& Front() const { return list.Front(); }
+    const T& Front() const { return list.Front(); }
 
-  T& Back() { return list.Back(); }
+    T& Back() { return list.Back(); }
 
-  const T& Back() const { return list.Back(); }
+    const T& Back() const { return list.Back(); }
 
-  bool Empty() const { return list.Empty(); }
+    bool Empty() const { return list.Empty(); }
 
- private:
-  XSFLinkedList<T> list;
+   private:
+    XSFLinkedList<T> list;
 };
 
 }  // namespace xsf_data_structures

@@ -7,26 +7,26 @@ namespace xsf_data_structures {
 
 template <typename T>
 class XSFLinkedStack {
- public:
-  void Push(const T& data) { list.PushFront(data); }
+   public:
+    void Push(const T& data) { list.PushFront(data); }
 
-  void Push(T&& data) { list.PushFront(std::move(data)); }
+    void Push(T&& data) { list.PushFront(std::move(data)); }
 
-  template <typename... Args>
-  void Emplace(Args&&... args) {
-    list.EmplaceFront(std::forward<Args>(args)...);
-  }
+    template <typename... Args>
+    void Emplace(Args&&... args) {
+        list.EmplaceFront(std::forward<Args>(args)...);
+    }
 
-  void Pop() { list.PopFront(); }
+    void Pop() { list.PopFront(); }
 
-  T& Top() { return list.Front(); }
+    T& Top() { return list.Front(); }
 
-  const T& Top() const { return list.Front(); }
+    const T& Top() const { return list.Front(); }
 
-  bool Empty() const { return list.Empty(); }
+    bool Empty() const { return list.Empty(); }
 
- private:
-  XSFLinkedList<T> list;
+   private:
+    XSFLinkedList<T> list;
 };
 
 }  // namespace xsf_data_structures
