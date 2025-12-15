@@ -11,7 +11,7 @@ class LFUCache {
     LFUCache(int capacity) { cap_ = capacity; }
 
     int get(int key) {
-        if (key2node_.contains(key)) {
+        if (key2node_.count(key) != 0) {
             // 找到 key
             increaseFreq(key);
             return key2node_[key]->val;
@@ -22,7 +22,7 @@ class LFUCache {
     }
 
     void put(int key, int value) {
-        if (key2node_.contains(key)) {
+        if (key2node_.count(key) != 0) {
             // key 已存在，更新
             increaseFreq(key);
             key2node_[key]->val = value;

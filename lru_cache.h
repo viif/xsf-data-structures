@@ -11,7 +11,7 @@ class LRUCache {
     LRUCache(int capacity) { cap_ = capacity; }
 
     int get(int key) {
-        if (key2node_.contains(key)) {
+        if (key2node_.count(key) != 0) {
             // 找到 key
             makeRecently(key);
             return key2node_[key]->val;
@@ -22,7 +22,7 @@ class LRUCache {
     }
 
     void put(int key, int value) {
-        if (key2node_.contains(key)) {
+        if (key2node_.count(key) != 0) {
             // 找到 key，更新
             key2node_[key]->val = value;
             makeRecently(key);

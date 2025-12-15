@@ -24,7 +24,8 @@ class XSFLinkedHashMap {
    public:
     // 顺序遍历所有 key，返回顺序即插入顺序
     std::vector<K> Keys() const {
-        std::vector<K> keys(list_.size());
+        std::vector<K> keys;
+        keys.reserve(list_.size());
         for (const auto& node : list_) {
             keys.push_back(node.key);
         }
