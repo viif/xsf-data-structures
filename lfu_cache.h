@@ -2,6 +2,7 @@
 #define LFU_CACHE_H
 
 #include <list>
+#include <map>
 #include <unordered_map>
 
 namespace xsf_data_structures {
@@ -61,7 +62,7 @@ class LFUCache {
             freq2nodes_.erase(freq);
             if (freq == min_freq_) {
                 // 更新最小频率
-                min_freq_++;
+                min_freq_ = freq2nodes_.begin()->first;
             }
         }
 
@@ -84,6 +85,8 @@ class LFUCache {
         key2node_.erase(key);
         // 移除对应 key 到频率的映射
         key2freq_.erase(key);
+        // 更新最小频率
+        min_freq_ = freq2nodes_.begin()->first;
     }
 
     struct Node {
@@ -93,7 +96,7 @@ class LFUCache {
     int cap_;
     int min_freq_;
     std::unordered_map<int, int> key2freq_;
-    std::unordered_map<int, std::list<Node>> freq2nodes_;
+    std::map<int, std::list<Node>> freq2nodes_;
     std::unordered_map<int, std::list<Node>::iterator> key2node_;
 };
 
